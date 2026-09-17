@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commerce for Agents | MIT Hackathon</title>
+  <meta name="description" content="An MIT hackathon and challenge series exploring negotiation, discovery, identity, and trust in commerce involving AI agents.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#071b28">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+  <style>
+    @font-face { font-family:"Neue Haas Grotesk Display Pro"; font-style:normal; font-weight:500; font-display:swap; src:url("https://fonts.cdnfonts.com/s/47998/NeueHaasDisplayRoman.woff") format("woff"); }
+    @font-face { font-family:"Neue Haas Grotesk Display Pro"; font-style:normal; font-weight:600; font-display:swap; src:url("https://fonts.cdnfonts.com/s/47998/NeueHaasDisplayMediu.woff") format("woff"); }
+    @font-face { font-family:"Neue Haas Grotesk Display Pro"; font-style:normal; font-weight:700; font-display:swap; src:url("https://fonts.cdnfonts.com/s/47998/NeueHaasDisplayBold.woff") format("woff"); }
+    :root { color-scheme:dark; --ink:#071b28; --paper:#f5f7ee; --muted:#b1c1c4; --navy:#071b28; --teal:#78d8ce; --gold:#edcf65; --blue:#40ace0; --green:#9bc95c; --line:#36505a; --page:1440px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:24px; }
+    body { margin:0; background:var(--navy); color:var(--paper); font-family:"Neue Haas Grotesk Display Pro", "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:1rem; font-weight:500; line-height:1.5; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration-thickness:1px; text-underline-offset:5px; }
+    a:hover { text-decoration-thickness:2px; }
+    a:focus-visible { outline:3px solid currentColor; outline-offset:6px; }
+    .wrap { width:min(var(--page), calc(100% - 96px)); margin-inline:auto; }
+    .skip { position:absolute; left:24px; top:-80px; z-index:10; background:var(--navy); color:var(--gold); padding:12px 20px; }
+    .skip:focus { top:12px; }
+    header { background:var(--navy); color:var(--paper); }
+    header .wrap { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:32px; border-bottom:1px solid var(--line); }
+    .site-title { font-size:.9375rem; line-height:1.2; font-weight:600; text-decoration:none; }
+    nav { display:flex; align-items:center; gap:30px; font-size:.875rem; }
+    nav a { text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    .nav-cta { color:var(--teal); font-weight:600; white-space:nowrap; }
+    .arrow { display:inline-block; margin-left:12px; font-size:1.25em; line-height:1; }
+    .hero { background:var(--navy); color:var(--paper); }
+    .hero-content { padding:38px 0 48px; border-bottom:1px solid var(--line); }
+    .eyebrow { color:var(--teal); margin:0 0 28px; font-size:.875rem; }
+    h1 { margin:0; font-size:clamp(5rem,15.2vw,13.8rem); font-weight:600; line-height:.9; letter-spacing:-.025em; }
+    h1 span { display:block; margin-top:.07em; margin-left:15.3%; }
+    .hero-details { display:grid; grid-template-columns:1.1fr 1fr; gap:12%; align-items:start; margin-top:52px; }
+    .intro { font-size:clamp(1.25rem,2.1vw,1.75rem); line-height:1.25; letter-spacing:-.02em; margin:0; max-width:580px; }
+    .context { color:var(--muted); font-size:1rem; line-height:1.5; margin:22px 0 0; max-width:475px; }
+    .participation .label { color:var(--gold); margin:0 0 9px; font-size:.75rem; letter-spacing:.09em; text-transform:uppercase; }
+    .participation h2 { margin:0 0 11px; font-size:1.5rem; font-weight:600; letter-spacing:-.025em; line-height:1.2; }
+    .participation p { color:var(--muted); margin:0 0 19px; font-size:1rem; line-height:1.5; }
+    .button { display:flex; justify-content:space-between; align-items:center; gap:20px; width:100%; padding:17px 0 14px; border-block:1px solid var(--gold); color:var(--paper); font-size:1.0625rem; font-weight:600; line-height:1.25; text-decoration:none; transition:padding .16s ease; }
+    .button:hover { padding-inline:12px; }
+    .button .arrow { color:var(--gold); font-size:1.5rem; }
+    #challenges { padding-top:58px; }
+    .section-heading { display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding-bottom:34px; }
+    .section-heading h2 { margin:0; font-size:1rem; font-weight:500; }
+    .section-heading p { margin:0; color:var(--muted); font-size:.875rem; }
+    .challenge { --accent:var(--blue); display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); align-items:start; gap:32px; padding:30px 0 32px; border-top:1px solid var(--line); }
+    .challenge:nth-child(2) { --accent:var(--teal); }
+    .challenge:nth-child(3) { --accent:var(--green); }
+    .challenge:nth-child(4) { --accent:var(--gold); }
+    .challenge h3 { color:var(--accent); margin:1px 0 0; font-size:clamp(1.75rem,3.2vw,2.875rem); line-height:1.05; font-weight:500; letter-spacing:-.04em; }
+    .challenge p { margin:4px 0 0; color:var(--muted); font-size:1rem; line-height:1.55; max-width:450px; }
+    .about { margin-top:28px; padding:42px 0 48px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:12%; }
+    .about h2 { margin:0 0 16px; color:var(--teal); font-size:1rem; font-weight:500; }
+    .about p { margin:0; max-width:575px; font-size:1rem; line-height:1.6; }
+    .about p + p { margin-top:14px; color:var(--muted); }
+    footer { background:var(--teal); color:var(--ink); }
+    footer .wrap { padding:28px 0 23px; }
+    .footer-main { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; }
+    .footer-name { margin:0; font-size:.875rem; line-height:1.5; }
+    .footer-name a { text-decoration:none; }
+    .footer-links { font-size:.875rem; }
+    @media (min-width:1540px) { h1 { font-size:14.8rem; } }
+    @media (max-width:1050px) {
+      .wrap { width:calc(100% - 64px); }
+      header .wrap { gap:24px; }
+      nav { gap:20px; }
+      .hero-details { gap:8%; }
+      .challenge { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:24px; }
+    }
+    @media (max-width:720px) {
+      .wrap { width:calc(100% - 40px); }
+      header .wrap { min-height:73px; gap:16px; }
+      .site-title { max-width:148px; font-size:.875rem; }
+      nav { gap:0; }
+      nav .section-link { display:none; }
+      .nav-cta { font-size:.875rem; }
+      .nav-cta .arrow { margin-left:6px; }
+      .hero-content { padding:32px 0 31px; }
+      .eyebrow { margin-bottom:27px; font-size:.875rem; }
+      h1 { font-size:clamp(3.125rem,15vw,6.8rem); letter-spacing:-.025em; line-height:.95; }
+      h1 span { margin-left:10%; margin-top:.08em; }
+      .hero-details { grid-template-columns:1fr; gap:32px; margin-top:34px; }
+      .intro { font-size:1.375rem; line-height:1.3; }
+      .context { margin-top:16px; }
+      .participation { border-top:1px solid var(--line); padding-top:24px; }
+      .participation h2 { font-size:1.5rem; }
+      .participation p { margin-bottom:17px; }
+      #challenges { padding-top:33px; }
+      .section-heading { display:block; padding-bottom:24px; }
+      .section-heading p { margin-top:7px; }
+      .challenge { grid-template-columns:1fr; row-gap:12px; padding:24px 0 27px; }
+      .challenge h3 { margin-top:3px; font-size:1.75rem; }
+      .challenge p { margin:0; }
+      .about { grid-template-columns:1fr; gap:29px; margin-top:5px; padding:30px 0 36px; }
+      .about h2 { margin-bottom:11px; }
+      .footer-main { gap:18px; }
+      .footer-name { max-width:220px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .button { transition:none; } }
+    @media print { body,.hero,header,footer { background:#fff; color:#071b28; } nav { display:none; } .wrap { width:100%; } .hero-content { padding-block:24px; } h1 { font-size:80px; } .hero-details { margin-top:30px; } .challenge { break-inside:avoid; } .eyebrow,.context,.participation p,.participation .label,.button,.button .arrow,.challenge p,.challenge h3,.about h2,.about p + p,.section-heading p { color:#071b28; } .button { border-color:#071b28; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="wrap">
+      <a class="site-title" href="#main">Commerce for Agents</a>
+      <nav aria-label="Main navigation">
+        <a class="section-link" href="#overview">Overview</a>
+        <a class="section-link" href="#challenges">Challenge areas</a>
+        <a class="nav-cta" href="https://www.figma.com/proto/39Wr8iLTceA9B7D3e9Cmw4/Project-Nanda---Commerce-for-Agents?node-id=545-3679&amp;p=f&amp;t=HNzW6PdrPmoNdyO7-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=545%3A3679" target="_blank" rel="noopener noreferrer" aria-label="Topcoder website, opens in a new tab">Topcoder website<span class="arrow" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="title">
+      <div class="wrap hero-content">
+        <p class="eyebrow">MIT hackathon and challenge series</p>
+        <h1 id="title">Commerce<span>for Agents</span></h1>
+        <div class="hero-details">
+        <div>
+        <p class="intro">Exploring the infrastructure for AI agents to discover trading partners, negotiate, and complete verifiable transactions.</p>
+        <p class="context">An MIT hackathon on agent commerce, with an emphasis on human oversight and open systems.</p>
+      </div>
+      <aside class="participation" aria-labelledby="participation-title">
+        <p class="label">Participation</p>
+        <h2 id="participation-title">Participate through Topcoder.</h2>
+        <p>Wipro will operate the series through Topcoder. Registration, submissions, rules, and results will be managed on the challenge website.</p>
+        <a class="button" href="https://www.figma.com/proto/39Wr8iLTceA9B7D3e9Cmw4/Project-Nanda---Commerce-for-Agents?node-id=545-3679&amp;p=f&amp;t=HNzW6PdrPmoNdyO7-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=545%3A3679" target="_blank" rel="noopener noreferrer" aria-label="Topcoder challenge website, opens in a new tab">Topcoder challenge website<span class="arrow" aria-hidden="true">↗</span></a>
+      </aside>
+        </div>
+      </div>
+    </section>
+    <section id="challenges" class="wrap" aria-labelledby="challenges-title">
+      <div class="section-heading"><h2 id="challenges-title">Challenge areas</h2><p>Four areas of a shared experimental marketplace</p></div>
+      <div class="challenges">
+        <article class="challenge"><h3>Negotiating agents</h3><p>Develop buyer and seller agents that negotiate price and quantity, form buying groups, and produce auditable transactions.</p></article>
+        <article class="challenge"><h3>Discovery service</h3><p>Help agents find relevant buyers and sellers, and evaluate how effectively the service matches demand with supply.</p></article>
+        <article class="challenge"><h3>Agent registry</h3><p>Connect agent identities to verified addresses and public keys, with authenticated registration and record management.</p></article>
+        <article class="challenge"><h3>Trust and security</h3><p>Verify identities, signatures, and transaction records, and test defenses against false demand and coordinated abuse.</p></article>
+      </div>
+    </section>
+    <section id="overview" class="about wrap" aria-label="Program overview">
+      <div><h2>About the hackathon</h2><p>The proposed program comprises four challenges within a shared marketplace for autonomous trading agents. Participants will develop and evaluate components for commerce involving multiple agents.</p></div>
+      <div><h2>Program information</h2><p>Challenge specifications, eligibility, schedules, prizes, and submission requirements will be published by Topcoder. Please consult each challenge page for its current details.</p><p>Program dates and final event details will be announced.</p></div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="footer-main">
+        <p class="footer-name"><a href="https://www.mit.edu/">Massachusetts Institute of Technology</a><br>Commerce for Agents</p>
+        <div class="footer-links"><a href="https://accessibility.mit.edu/">Accessibility</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

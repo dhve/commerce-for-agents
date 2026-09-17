@@ -2,6 +2,8 @@
 
 Static landing page for the Commerce for Agents hackathon and challenge series.
 
+[Live website](https://commerce-for-agents-production.up.railway.app)
+
 ## Files
 
 - `public/index.html` contains the page markup and styles.
@@ -22,3 +24,5 @@ Open <http://localhost:4173>.
 ## Deployment
 
 Railway serves `public/` through Caddy on its assigned `PORT`, defaulting to 8080. The production service is `commerce-for-agents` in the NANDA Projects workspace.
+
+Push changes to `main` to deploy automatically through the connected Railway service.

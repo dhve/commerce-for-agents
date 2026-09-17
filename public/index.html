@@ -33,9 +33,13 @@
     .arrow { display:inline-block; width:1em; height:1em; flex-shrink:0; vertical-align:-.125em; margin-left:12px; font-size:1.25em; }
     .hero { background:var(--navy); color:var(--paper); }
     .hero-content { padding:38px 0 48px; border-bottom:1px solid var(--line); }
-    .program-names { display:flex; align-items:flex-start; gap:64px; margin-bottom:32px; }
-    .program-names p { margin:0; font-size:2.25rem; font-weight:600; line-height:1.1; letter-spacing:-.025em; }
-    .program-names span { display:block; margin-top:8px; color:var(--teal); font-size:.875rem; font-weight:500; line-height:1.4; letter-spacing:0; }
+    .program-logos { display:flex; align-items:center; gap:40px; margin-bottom:36px; }
+    .program-logos img { display:block; height:auto; max-width:100%; }
+    .logo-topcoder { width:200px; flex:0 1 200px; min-width:0; }
+    .logo-wipro { width:112px; flex:0 1 112px; min-width:0; filter:brightness(0) invert(1); }
+    .logo-mit { display:block; width:72px; flex:0 0 72px; margin-left:auto; }
+    .logo-mit img { width:100%; filter:brightness(0) invert(1); }
+    .eyebrow { color:var(--teal); margin:0 0 28px; font-size:.875rem; }
     h1 { margin:0; font-size:clamp(5rem,15.2vw,13.8rem); font-weight:600; line-height:.9; letter-spacing:-.025em; }
     h1 span { display:block; margin-top:.07em; margin-left:15.3%; }
     .hero-details { display:grid; grid-template-columns:1.1fr 1fr; gap:12%; align-items:start; margin-top:52px; }
@@ -84,8 +88,8 @@
       .nav-cta { font-size:.875rem; }
       .nav-cta .arrow { margin-left:6px; }
       .hero-content { padding:32px 0 31px; }
-      .program-names { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px; }
-      .program-names p { font-size:1.75rem; }
+      .program-logos { gap:28px; margin-bottom:32px; }
+      .logo-mit { width:60px; flex-basis:60px; margin-right:9px; }
       h1 { font-size:clamp(3.125rem,15vw,6.8rem); letter-spacing:-.025em; line-height:.95; }
       h1 span { margin-left:10%; margin-top:.08em; }
       .hero-details { grid-template-columns:1fr; gap:32px; margin-top:34px; }
@@ -106,7 +110,7 @@
       .footer-name { max-width:220px; }
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .button { transition:none; } }
-    @media print { body,.hero,header,footer { background:#fff; color:#071b28; } nav { display:none; } .wrap { width:100%; } .hero-content { padding-block:24px; } h1 { font-size:80px; } .hero-details { margin-top:30px; } .challenge { break-inside:avoid; } .program-names span,.context,.participation p,.participation .label,.button,.button .arrow,.challenge p,.challenge h3,.about h2,.about p + p,.section-heading p { color:#071b28; } .button { border-color:#071b28; } }
+    @media print { body,.hero,header,footer { background:#fff; color:#071b28; } nav { display:none; } .wrap { width:100%; } .hero-content { padding-block:24px; } .program-logos img { filter:brightness(0); } h1 { font-size:80px; } .hero-details { margin-top:30px; } .challenge { break-inside:avoid; } .eyebrow,.context,.participation p,.participation .label,.button,.button .arrow,.challenge p,.challenge h3,.about h2,.about p + p,.section-heading p { color:#071b28; } .button { border-color:#071b28; } }
   </style>
 </head>
 <body>
@@ -124,10 +128,12 @@
   <main id="main">
     <section class="hero" aria-labelledby="title">
       <div class="wrap hero-content">
-        <div class="program-names">
-          <p>MIT<span>Hackathon and challenge series</span></p>
-          <p>Topcoder<span>a Wipro company</span></p>
+        <div class="program-logos">
+          <img class="logo-topcoder" src="logos/topcoder.svg" alt="Topcoder, a Wipro company" width="200" height="48">
+          <img class="logo-wipro" src="logos/wipro.svg" alt="Wipro" width="393" height="158">
+          <a class="logo-mit" href="https://www.mit.edu/" aria-label="MIT home"><img src="logos/mit.svg" alt="MIT" width="63" height="33"></a>
         </div>
+        <p class="eyebrow">MIT hackathon and challenge series</p>
         <h1 id="title">Commerce<span>for Agents</span></h1>
         <div class="hero-details">
         <div>
